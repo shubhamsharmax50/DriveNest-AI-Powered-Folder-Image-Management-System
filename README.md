@@ -1,73 +1,54 @@
 # DriveNest - AI-Powered Folder & Image Management System
 
-A simplified Google Drive clone for managing nested folders and images, featuring AI-powered commands via Groq.
+DriveNest is a full-stack, AI-enhanced file management system that allows users to organize images into nested folder structures, similar to Google Drive. It features a natural language AI assistant that can execute file system commands.
 
-## Features
+## 🚀 Live Links
+- **Frontend (Vercel)**: [https://drive-nest-ai-powered-folder-image.vercel.app](https://drive-nest-ai-powered-folder-image.vercel.app)
+- **Backend (Render)**: [https://drivenest-backend-ui3t.onrender.com](https://drivenest-backend-ui3t.onrender.com)
 
-- **Authentication**: JWT-based Signup/Login (bcrypt password hashing).
-- **Nested Folder System**: Create infinite parent-child folder structures.
-- **Image Management**: Upload images to specific folders (Cloudinary storage).
-- **AI Integration**: Use natural language commands to create folders and list images (Groq AI).
-- **Size Tracking**: Recursive folder size calculation.
-- **Modern UI**: Dark-themed, responsive dashboard built with React and Tailwind CSS.
+## ✨ Core Features
+- **Modern Authentication**: User registration and login using JWT and Bcrypt (No Firebase used as per requirements).
+- **Infinite Nesting**: Create folders inside folders with a robust parent-child database relationship.
+- **Image Management**: 
+    - Upload images to specific folders.
+    - Cloud storage integration via **Cloudinary**.
+    - Metadata (size, name, URL) stored in **MongoDB**.
+- **Recursive Folder Size**: An advanced API that calculates the total size of a folder by summing all images within it and all its subfolders at any depth.
+- **AI Assistant (Bonus)**: Built-in command bar powered by **Groq (LLaMA 3)**.
+    - Commands: *"Create folder Projects"*, *"Create folder Assets inside subham"*, *"Show all images in Work"*.
+- **Responsive UI**: Clean, dark-mode dashboard built with **Tailwind CSS v4** and **Lucide Icons**.
 
-## Tech Stack
+## 🛠️ Tech Stack
+- **Frontend**: React.js (Vite), Tailwind CSS, Axios, React Router.
+- **Backend**: Node.js, Express.js.
+- **Database**: MongoDB Atlas (Mongoose ODM).
+- **Storage**: Cloudinary.
+- **AI Engine**: Groq SDK (LLaMA 3).
 
-- **Frontend**: React.js (Vite), Tailwind CSS (v4), Axios, Lucide Icons.
-- **Backend**: Node.js, Express.js, MongoDB (Mongoose).
-- **Services**: Cloudinary (Binary Storage), Groq (AI).
+## 📂 Project Structure
+- `/` (Root): Backend logic, API routes, and Database models.
+- `/frontend`: React application, UI components, and Tailwind configuration.
 
-## Setup Instructions
+## ⚙️ Local Setup Instructions
 
-### 1. Prerequisites
-- Node.js installed.
-- MongoDB Atlas account.
-- Cloudinary account.
-- Groq Cloud account.
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/shubhamsharmax50/DriveNest-AI-Powered-Folder-Image-Management-System.git
+   ```
 
-### 2. Environment Variables
-Create a `.env` file in the root directory with the following:
+2. **Backend Configuration**:
+   - Create a `.env` in the root folder.
+   - Add: `MONGODB_URI`, `JWT_SECRET`, `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`, and `GROQ_API_KEY`.
+   - Run `npm install` and `node server.js`.
 
-```env
-MONGODB_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
+3. **Frontend Configuration**:
+   - Go to `/frontend` folder.
+   - Run `npm install`.
+   - Run `npm run dev`.
 
-# Cloudinary
-CLOUDINARY_CLOUD_NAME=your_cloud_name
-CLOUDINARY_API_KEY=your_api_key
-CLOUDINARY_API_SECRET=your_api_secret
+## 🌐 Deployment Details
+- **Backend**: Hosted on **Render** (Auto-sync with GitHub).
+- **Frontend**: Hosted on **Vercel** (Configured with production environment variables).
 
-# Groq AI
-GROQ_API_KEY=your_groq_api_key
-```
-
-### 3. Installation
-
-**Backend:**
-```bash
-npm install
-node server.js
-```
-
-**Frontend:**
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-## Troubleshooting
-
-### MongoDB Connection Error
-If you see `Error connecting to MongoDB: Could not connect to any servers...`, you must **Whitelist your IP address** in MongoDB Atlas:
-1. Go to **Network Access** in Atlas.
-2. Click **Add IP Address**.
-3. Choose **Add Current IP Address** or **Allow Access from Anywhere (0.0.0.0/0)**.
-
-### Tailwind CSS Issues
-This project uses **Tailwind CSS v4**. Ensure you are using a recent version of Node.js (20.19+ recommended) for smooth operation with Vite 8.
-
-## Usage
-- **Double Click** a folder to enter it.
-- **Use the Breadcrumbs** to navigate back up.
-- **Click the Sparkles** (AI input) to try: "Create a folder named Projects" or "Create a folder called Images inside Projects".
+---
+Developed with ❤️ for organized digital assets.
